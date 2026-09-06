@@ -1,0 +1,4 @@
+interface:
+  display_name: "M365 个人 To Do"
+  short_description: "通过 CLI 安全查询、添加、更新和删除个人 Microsoft To Do"
+  default_prompt: "使用 $m365-todo 查询我的待办，并只返回完成任务所需的最少字段。"

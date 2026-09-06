@@ -1,0 +1,75 @@
+{
+  "url": "http://127.0.0.1:5173/",
+  "totalDuration": 60,
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "server": {
+    "command": "npm",
+    "args": ["run", "dev", "--", "--host", "127.0.0.1"],
+    "cwd": ".",
+    "timeout": 30000
+  },
+  "browser": {
+    "channel": "chrome",
+    "headless": true
+  },
+  "readyDelay": 800,
+  "preflight": [
+    {
+      "type": "click",
+      "label": "回到首页",
+      "locator": {
+        "kind": "role",
+        "role": "button",
+        "name": "首页",
+        "exact": true
+      }
+    }
+  ],
+  "actions": [
+    {
+      "at": 1,
+      "type": "point",
+      "label": "指向页面标题",
+      "locator": {
+        "kind": "role",
+        "role": "heading",
+        "name": "演示项目",
+        "exact": true
+      }
+    },
+    {
+      "at": 8,
+      "type": "click",
+      "label": "打开功能页",
+      "locator": {
+        "kind": "role",
+        "role": "button",
+        "name": "功能页",
+        "exact": true
+      }
+    },
+    {
+      "at": 16,
+      "type": "scrollIntoView",
+      "label": "展示结果区域",
+      "locator": {
+        "kind": "text",
+        "text": "分析结果",
+        "exact": true
+      }
+    },
+    {
+      "at": 55,
+      "type": "wait",
+      "label": "结束画面停留",
+      "duration": 5000
+    }
+  ],
+  "encoding": {
+    "preset": "medium",
+    "crf": 18
+  }
+}

@@ -1,0 +1,137 @@
+\documentclass[10pt,aspectratio=43,mathserif]{beamer}
+
+\usepackage{seu}
+\usepackage{xeCJK}
+\usepackage{amsmath,amsfonts,amssymb,bm}
+\usepackage{color}
+\usepackage{graphicx,hyperref,url}
+\usepackage{etoolbox}
+
+\setsansfont[Path=fonts/]{Helvetica}
+\beamertemplateballitem
+\setbeamertemplate{footline}{}
+
+% 正文统一使用较小字号；标题页、章节标题与 frame 标题保持主题默认字号
+\setbeamerfont{normal text}{size=\footnotesize}
+\setbeamerfont{block title}{size=\footnotesize}
+\setbeamerfont{block title alerted}{size=\footnotesize}
+\setbeamerfont{block body}{size=\footnotesize}
+\setbeamerfont{block body alerted}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate body}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subbody}{size=\scriptsize}
+
+% 展示公式统一缩小一级，行内公式保持正文大小
+\AtBeginEnvironment{displaymath}{\footnotesize}
+\AtBeginEnvironment{equation}{\footnotesize}
+\AtBeginEnvironment{equation*}{\footnotesize}
+\AtBeginEnvironment{align}{\footnotesize}
+\AtBeginEnvironment{align*}{\footnotesize}
+
+% 将 block 改为无边框的“标题 + 正文”结构
+\setbeamertemplate{block begin}{%
+    \par\vspace{0.35em}%
+    {\usebeamerfont{block title}\usebeamercolor[fg]{structure}\insertblocktitle\par}%
+    \vspace{0.15em}%
+    \usebeamerfont{block body}\usebeamercolor[fg]{normal text}%
+}
+\setbeamertemplate{block end}{\par\vspace{0.35em}}
+\setbeamertemplate{block alerted begin}{%
+    \par\vspace{0.35em}%
+    {\usebeamerfont{block title alerted}\usebeamercolor[fg]{alerted text}\insertblocktitle\par}%
+    \vspace{0.15em}%
+    \usebeamerfont{block body alerted}\usebeamercolor[fg]{normal text}%
+}
+\setbeamertemplate{block alerted end}{\par\vspace{0.35em}}
+
+% 图片暂未插入时使用的统一占位提示
+\newcommand{\imageplaceholder}[2][2.5cm]{%
+    \parbox[c][#1][c]{\linewidth}{%
+        \centering\scriptsize\textcolor{black!60}{\textbf{图片占位：#2}}%
+    }%
+}
+
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+        \frametitle{\textbf{目录}}
+        \textbf{\tableofcontents[currentsection]}
+    \end{frame}
+}
+
+\title[短标题]{\fontsize{13pt}{18pt}\selectfont 完整报告标题}
+\author[页脚短作者]{作者甲, 作者乙 \\ \medskip}
+\institute[短机构名]{完整机构名}
+\date[\today]{\today}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section*{目录}
+\begin{frame}
+    \frametitle{\textbf{目录}}
+    \textbf{\tableofcontents}
+\end{frame}
+
+\section[第一部分]{第一部分标题}
+
+\begin{frame}
+    \frametitle{\textbf{页面标题}}
+    \begin{columns}[T]
+        \column{.46\textwidth}
+        \begin{block}{\textbf{块标题}}
+            \begin{itemize}
+                \item 要点一
+                \item 要点二
+            \end{itemize}
+        \end{block}
+
+        \column{.50\textwidth}
+        \begin{block}{\textbf{块标题}}
+            展示公式示例：
+            \[
+                V(s)=\mathbb{E}\left[\sum_{t=0}^{\infty}\gamma^t r_t\right]
+            \]
+        \end{block}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textbf{图片占位示例}}
+    \begin{columns}[T]
+        \column{.48\textwidth}
+        \begin{block}{\textbf{左侧说明}}
+            \begin{itemize}
+                \item 图文双栏时使用该版式
+                \item 图片统一存放在 \texttt{figures/} 下
+            \end{itemize}
+        \end{block}
+
+        \column{.48\textwidth}
+        \centering
+        \imageplaceholder{figures/example.png}
+    \end{columns}
+\end{frame}
+
+\section[第二部分]{第二部分标题}
+
+\begin{frame}
+    \frametitle{\textbf{列表与要点}}
+    \begin{block}{\textbf{有明确顺序时}}
+        \begin{enumerate}
+            \item 第一步
+            \item 第二步
+            \item 第三步
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\section*{}
+\begin{frame}
+    \centering
+    \LARGE\textbf{\quad Thanks for Listening.}
+\end{frame}
+
+\end{document}

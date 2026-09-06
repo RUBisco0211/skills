@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Demo Video"
+  short_description: "录制网页 Demo 演示视频，生成操作脚本、字幕与可选旁白"
+  default_prompt: "使用 $web-demo-video 为当前 Web Demo 设计并录制一套带字幕的演示视频。"

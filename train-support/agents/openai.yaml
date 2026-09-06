@@ -1,0 +1,4 @@
+interface:
+  display_name: "训练辅助补全"
+  short_description: "严格保持算法逻辑不变，补全日志、评估、进度显示与模型权重保存"
+  default_prompt: "使用 $train-support 在不修改原有算法逻辑的前提下补全训练日志、评估、进度显示和权重保存。"
