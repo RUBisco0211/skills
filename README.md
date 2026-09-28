@@ -7,7 +7,7 @@
 | Skill | 说明 |
 |---|---|
 | [m365-todo](m365-todo/) | 通过 CLI for Microsoft 365 查询和管理个人 Microsoft To Do，支持紧凑 JMESPath/jq 查询 |
-| [gen-fastfetch-logo](gen-fastfetch-logo/) | 把图片（专辑封面/logo）转成 ANSI 彩色 ASCII 字符阵并配置为 fastfetch logo |
+| [gen-fastfetch-logo](gen-fastfetch-logo/) | 把图片（封面/logo/像素画）转成 ANSI 彩色 fastfetch logo，可选 ASCII 疏密阵或半块字符像素画两种风格 |
 | [auto-paper-beamer](auto-paper-beamer/) | 把 PDF 学术论文自动制作成东南大学 Beamer 演示文稿（流程编排，依赖 pdf2md 和 seu-beamer） |
 | [pdf2md](pdf2md/) | 使用本地部署 MinerU CLI 将 PDF 转换为高质量 Markdown（保留标题层级、公式、表格与图片） |
 | [seu-beamer](seu-beamer/) | 基于东南大学 Beamer 模板创建、编辑、重构和编译幻灯片 |
