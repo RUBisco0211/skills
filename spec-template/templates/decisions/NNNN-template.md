@@ -1,0 +1,16 @@
+# NNNN <标题>
+
+- DATE:
+- TAGS:
+- STATUS: 当前
+- SUPERSEDES: —
+
+## DECISION
+
+## REJECTED
+
+## RATIONALE
+
+## OUT OF SCOPE
+
+## OPEN

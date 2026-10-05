@@ -15,6 +15,7 @@
 | [train-support](train-support/) | 在不改算法逻辑的前提下补全强化学习 / 深度学习项目训练代码的日志、评估、进度、保存等外围功能 |
 | [video-summary](video-summary/) | 使用 `yt-dlp` 下载提取视频/音频/字幕，`whisper` 转写并整理为 Obsidian 风格 Markdown 笔记 |
 | [web-demo-video](web-demo-video/) | 为网页 Demo 设计讲解流程并录制演示视频，生成旁白稿、字幕与 TTS 旁白，依赖 computer-use |
+| [spec-template](spec-template/) | 为 vibe coding / AI 协作项目初始化轻量文档规范体系：`AGENTS.md` 常驻约束、`WORKFLOW.md` 流程总纲、决策索引与正文、调研文档目录 |
 
 ## 安装
 
