@@ -21,11 +21,50 @@ author: RUBisco0211
 | `templates/decisions/NNNN-template.md` | `<项目根>/docs/decisions/NNNN-<标题>.md` | 按需，首次记决策时才生成 |
 | `templates/research/TEMPLATE.md` | `<项目根>/docs/research/<主题>.md` | 按需，首次调研时才生成 |
 
+## 存放位置
+
+### 目标项目里的完整布局
+
+```
+<项目根>/
+├── AGENTS.md                  常驻约束，唯一事实来源
+├── CLAUDE.md                  仅 Claude Code 项目需要，内容一行 `@AGENTS.md`
+├── WORKFLOW.md                给人看的流程总纲
+└── docs/
+    ├── DECISIONS.md           决策索引
+    ├── decisions/
+    │   └── NNNN-<标题>.md     决策正文，一条一个文件
+    └── research/
+        └── <主题>.md          调研文档
+```
+
+### 存放规则
+
+- **全部随代码提交进版本控制**。约束文档和代码不同步，等于没有约束。
+- **根目录只放 `AGENTS.md` 和 `WORKFLOW.md`**。`WORKFLOW.md` 是给人看的总纲，放进 `docs/` 会被当成"待读文档"，所以留在根。其余一律进 `docs/`。
+- **`docs/decisions/` 和 `docs/research/` 在第一次真有内容时才建**。空目录 git 不跟踪，预先创建没有价值——不要为了结构完整而造空目录。
+- 目标目录不存在就直接创建；已存在 `docs/` 且有其他内容时，只在其中补子目录，**不动既有文件**。
+
+### 不同工具的落点
+
+| 工具 | 入口文件 | 做法 |
+|---|---|---|
+| Codex / Cursor / 其他读 `AGENTS.md` 的工具 | `AGENTS.md` | 直接用 |
+| Claude Code | `CLAUDE.md` | 内容只需一行 `@AGENTS.md`，约束全部写在 `AGENTS.md` |
+| 同时用多个工具 | 各自入口都指向 `AGENTS.md` | **单一事实来源**，不复制内容到多个文件 |
+
+### monorepo / 多包
+
+- **根放一份主 `AGENTS.md`**，写全项目通用的约束与背景。
+- 子包**只在有独立约束时才加** `packages/<pkg>/AGENTS.md`（例如前后端分层不同），并在根 `AGENTS.md` 第 12 节登记触发场景。
+- **决策记录集中在根 `docs/decisions/`**，不按包拆——跨包决策放哪都别扭，统一编号更省事。
+- 调研文档同样集中在根 `docs/research/`。
+
 ## 工作流
 
 ### 第 1 步：确认目标与现状
 
-- 确认目标项目根目录。
+- 确认目标项目根目录（git 根或用户指定的项目根），布局以「存放位置」一节为准。
 - 检查是否已存在 `AGENTS.md` / `CLAUDE.md` / `WORKFLOW.md` / `docs/`。
   - **已存在：不要覆盖。** 展示现有结构，只补齐缺失的部分，改动前先给用户看要加什么。
   - 已有 `CLAUDE.md` 且内容自成体系：不替换它，改为在 `AGENTS.md` 落地，并让 `CLAUDE.md` 加一行 `@AGENTS.md`。
@@ -55,6 +94,8 @@ author: RUBisco0211
 
 - [ ] `AGENTS.md` ≤ 200 行。
 - [ ] 占位符已全部替换或删除。
+- [ ] 文件位置符合「存放位置」一节：`AGENTS.md` / `WORKFLOW.md` 在根，其余在 `docs/` 下。
+- [ ] `docs/` 下没有为了占位而建的空目录。
 - [ ] 第 12 节「按需加载」表里登记了所有 `docs/` 下的文件及其触发场景——没登记的不会被读到。
 - [ ] `docs/DECISIONS.md` 索引表与 `docs/decisions/` 下的文件一一对应。
 - [ ] 给用户列出新建/修改的文件清单。

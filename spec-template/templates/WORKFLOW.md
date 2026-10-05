@@ -7,6 +7,7 @@
 ```
 project/
 ├── AGENTS.md              唯一常驻文件，<200 行
+├── CLAUDE.md              仅 Claude Code 项目：内容一行 `@AGENTS.md`
 ├── WORKFLOW.md            本文件
 └── docs/
     ├── DECISIONS.md       决策索引
