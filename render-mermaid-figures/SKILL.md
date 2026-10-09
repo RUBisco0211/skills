@@ -2,7 +2,8 @@
 name: render-mermaid-figures
 version: 1.0.0
 author: RUBisco0211
-description: 将 Markdown 文档中的 Mermaid 图表代码渲染为 PNG 图片文件，并把 Mermaid 代码块替换为图片引用。当用户需要把 Markdown 中的 Mermaid 代码转成图片、从已保存的 .mmd 源文件重新生成图片，或为迁移到 Word/手工排版文档做准备时使用。---
+description: 将 Markdown 文档中的 Mermaid 图表代码渲染为 PNG 图片文件，并把 Mermaid 代码块替换为图片引用。当用户需要把 Markdown 中的 Mermaid 代码转成图片、从已保存的 .mmd 源文件重新生成图片，或为迁移到 Word/手工排版文档做准备时使用。
+---
 
 # Render Mermaid Figures
 
