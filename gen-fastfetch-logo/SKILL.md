@@ -1,6 +1,6 @@
 ---
 name: gen-fastfetch-logo
-description: "把图片(封面/logo/像素画)转成 ANSI 24-bit 彩色 fastfetch logo，可选 ASCII 疏密阵或半块字符像素画两种风格。Use when converting an image to a fastfetch logo."
+description: "把图片(封面/logo/像素画)转成 ANSI 24-bit 彩色 fastfetch logo，可选 ASCII 疏密阵或半块字符像素画两种风格。当用户要把图片转成 fastfetch logo 时使用。"
 version: 1.1.0
 author: RUBisco0211
 license: MIT

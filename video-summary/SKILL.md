@@ -8,7 +8,7 @@ dependencies: [yt-dlp, whisper-cli, ffmpeg]
 platforms: [macos]
 ---
 
-# Video Summary
+# 视频转 Obsidian 笔记
 
 从用户给出的视频链接开始，下载视频 → 提取音频文本 → 校对 → 生成 Obsidian Markdown 笔记 的完整工作流。
 

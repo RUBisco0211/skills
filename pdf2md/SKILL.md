@@ -8,7 +8,7 @@ dependencies: [mineru]
 platforms: [macos]
 ---
 
-# PDF to Markdown (MinerU)
+# PDF 转 Markdown（MinerU）
 
 使用本机 `~/SelfHosted/MinerU` 中的 MinerU（版本 3.2.1）把 PDF（或图片、office 文档）批量转换为结构化的 Markdown 文件，输出包含标题层级、`$$...$$` LaTeX 公式、`![](images/xxx.jpg)` 相对路径图片引用与管道表格。
 

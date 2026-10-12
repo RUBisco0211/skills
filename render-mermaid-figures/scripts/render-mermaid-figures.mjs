@@ -20,7 +20,7 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     const next = () => {
-      if (i + 1 >= argv.length) throw new Error(`Missing value for ${arg}`);
+      if (i + 1 >= argv.length) throw new Error(`参数 ${arg} 缺少取值`);
       i += 1;
       return argv[i];
     };
@@ -39,7 +39,7 @@ function parseArgs(argv) {
       printHelp();
       process.exit(0);
     } else {
-      throw new Error(`Unknown option: ${arg}`);
+      throw new Error(`未知选项：${arg}`);
     }
   }
 
@@ -47,20 +47,20 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log(`Usage:
-  render-mermaid-figures.mjs [options]
+  console.log(`用法：
+  render-mermaid-figures.mjs [选项]
 
-Options:
-  --input <path>            Markdown file. Default: doc.md
-  --image-dir <path>        Rendered PNG directory. Default: images/mermaid
-  --source-dir <path>       Mermaid source directory. Default: images/mermaid/source
-  --config <path>           Puppeteer config path. Default: puppeteer-config.json
-  --width <number>          Mermaid render width. Default: 1800
-  --scale <number>          Mermaid render scale. Default: 2
-  --background <color>      Render background. Default: white
-  --caption-prefix <text>   Caption prefix after Mermaid blocks. Default: 图
-  --clean                   Delete existing figure-XX PNG/MMD files before fresh extraction
-  --no-rewrite              Render only, do not modify Markdown
+选项：
+  --input <path>            Markdown 文件，默认 doc.md
+  --image-dir <path>        渲染出的 PNG 目录，默认 images/mermaid
+  --source-dir <path>       Mermaid 源码目录，默认 images/mermaid/source
+  --config <path>           Puppeteer 配置路径，默认 puppeteer-config.json
+  --width <number>          Mermaid 渲染宽度，默认 1800
+  --scale <number>          Mermaid 渲染缩放，默认 2
+  --background <color>      渲染背景，默认 white
+  --caption-prefix <text>   Mermaid 代码块后的图注前缀，默认 "图 "
+  --clean                   重新提取前删除已有的 figure-XX PNG/MMD 文件
+  --no-rewrite              只渲染，不修改 Markdown
 `);
 }
 
@@ -69,7 +69,7 @@ function ensureMmdc() {
   if (result.status !== 0) {
     process.stderr.write(result.stdout ?? "");
     process.stderr.write(result.stderr ?? "");
-    throw new Error("mmdc was not found. Install @mermaid-js/mermaid-cli first.");
+    throw new Error("未找到 mmdc，请先安装 @mermaid-js/mermaid-cli。");
   }
 }
 
@@ -146,7 +146,7 @@ function renderFigure(figure, options) {
   if (result.status !== 0) {
     process.stderr.write(result.stdout ?? "");
     process.stderr.write(result.stderr ?? "");
-    throw new Error(`Failed to render ${figure.mermaidPath}`);
+    throw new Error(`渲染失败：${figure.mermaidPath}`);
   }
 }
 
@@ -159,7 +159,7 @@ options.config = path.resolve(options.config);
 ensureMmdc();
 
 if (!fs.existsSync(options.input)) {
-  throw new Error(`Input Markdown file does not exist: ${options.input}`);
+  throw new Error(`输入的 Markdown 文件不存在：${options.input}`);
 }
 
 fs.mkdirSync(options.imageDir, { recursive: true });
@@ -177,7 +177,7 @@ if (figures.length === 0) {
 }
 
 if (figures.length === 0) {
-  throw new Error(`No Mermaid diagrams found in ${options.input} or ${options.sourceDir}.`);
+  throw new Error(`在 ${options.input} 和 ${options.sourceDir} 中都没有找到 Mermaid 图表。`);
 }
 
 for (const figure of figures) {
@@ -193,7 +193,7 @@ if (options.rewrite && figures[0].fullMatch) {
   fs.writeFileSync(options.input, updated);
 }
 
-console.log(`Rendered ${figures.length} Mermaid diagram(s).`);
+console.log(`已渲染 ${figures.length} 张 Mermaid 图表。`);
 if (figures[0].fullMatch && options.rewrite) {
-  console.log(`Updated Markdown: ${options.input}`);
+  console.log(`已更新 Markdown：${options.input}`);
 }

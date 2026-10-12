@@ -7,63 +7,63 @@ license: MIT
 dependencies: [node, "@mermaid-js/mermaid-cli"]
 ---
 
-# Render Mermaid Figures
+# Mermaid 图渲染
 
-Use this skill when a Markdown document contains Mermaid diagrams that should become rendered image files, especially for Word-oriented technical documents where Mermaid code blocks should be replaced by figure references.
+当 Markdown 文档里的 Mermaid 图表需要变成图片文件时使用本 skill，尤其是面向 Word 的技术文档：把 Mermaid 代码块替换为图片引用。
 
-## Tooling
+## 工具
 
-This skill includes one reusable script:
+本 skill 自带一个可复用脚本：
 
 ```bash
 node scripts/render-mermaid-figures.mjs
 ```
 
-When using the script from outside this skill directory, resolve it relative to the directory that contains this `SKILL.md`. Do not assume a fixed user name, home directory layout, or `.codex` skill path.
+在 skill 目录之外调用脚本时，以本 `SKILL.md` 所在目录为基准解析路径。不要假定固定的用户名、home 目录结构或 `.codex` skill 路径。
 
-For a shell command, set a variable to this skill directory first, then call the script through that variable:
-
-```bash
-MERMAID_FIGURE_SKILL="<path-to-this-skill>"
-node "$MERMAID_FIGURE_SKILL/scripts/render-mermaid-figures.mjs"
-```
-
-## What The Script Does
-
-The script supports two workflows.
-
-1. Fresh conversion from Markdown:
-   - Finds Mermaid code blocks in the Markdown file.
-   - Requires a figure caption immediately after each Mermaid block, such as `图 3-XX 分系统架构图`.
-   - Writes each Mermaid source to `images/mermaid/source/figure-XX.mmd`.
-   - Renders each source file to `images/mermaid/figure-XX.png`.
-   - Replaces each Mermaid block in the Markdown file with a Markdown image reference plus the original caption.
-
-2. Regeneration from saved Mermaid source:
-   - If the Markdown file no longer contains Mermaid code blocks, reads `images/mermaid/source/figure-XX.mmd`.
-   - Re-renders the corresponding `images/mermaid/figure-XX.png`.
-   - Leaves the Markdown text unchanged.
-
-## Default Command
-
-From the project directory that contains the Markdown file:
+在 shell 里先把 skill 目录设成变量，再通过变量调用脚本：
 
 ```bash
 MERMAID_FIGURE_SKILL="<path-to-this-skill>"
 node "$MERMAID_FIGURE_SKILL/scripts/render-mermaid-figures.mjs"
 ```
 
-Defaults:
+## 脚本做什么
 
-- Markdown file: `doc.md`
-- Image directory: `images/mermaid`
-- Source directory: `images/mermaid/source`
-- Puppeteer config: `puppeteer-config.json`
-- Output background: `white`
-- Mermaid render width: `1800`
-- Scale: `2`
+脚本支持两条工作流。
 
-## Common Options
+1. 从 Markdown 首次转换：
+   - 找出 Markdown 文件里的 Mermaid 代码块。
+   - 要求每个 Mermaid 代码块紧跟一行图注，例如 `图 3-XX 分系统架构图`。
+   - 把每段 Mermaid 源码写入 `images/mermaid/source/figure-XX.mmd`。
+   - 把每个源文件渲染为 `images/mermaid/figure-XX.png`。
+   - 把 Markdown 里的每个 Mermaid 代码块替换为图片引用加原图注。
+
+2. 从已保存的 Mermaid 源码重新生成：
+   - Markdown 文件里已无 Mermaid 代码块时，读取 `images/mermaid/source/figure-XX.mmd`。
+   - 重新渲染对应的 `images/mermaid/figure-XX.png`。
+   - 不改动 Markdown 正文。
+
+## 默认命令
+
+在存放 Markdown 文件的项目目录中执行：
+
+```bash
+MERMAID_FIGURE_SKILL="<path-to-this-skill>"
+node "$MERMAID_FIGURE_SKILL/scripts/render-mermaid-figures.mjs"
+```
+
+默认值：
+
+- Markdown 文件：`doc.md`
+- 图片目录：`images/mermaid`
+- 源码目录：`images/mermaid/source`
+- Puppeteer 配置：`puppeteer-config.json`
+- 输出背景：`white`
+- Mermaid 渲染宽度：`1800`
+- 缩放：`2`
+
+## 常用参数
 
 ```bash
 MERMAID_FIGURE_SKILL="<path-to-this-skill>"
@@ -77,44 +77,44 @@ node "$MERMAID_FIGURE_SKILL/scripts/render-mermaid-figures.mjs" \
   --background white
 ```
 
-Useful flags:
+参数说明：
 
-- `--input <path>`: Markdown file to process.
-- `--image-dir <path>`: Directory for rendered PNG files.
-- `--source-dir <path>`: Directory for saved `.mmd` source files.
-- `--config <path>`: Puppeteer config path for `mmdc`.
-- `--width <number>`: Mermaid render width.
-- `--scale <number>`: Mermaid render scale.
-- `--background <color>`: Render background.
-- `--caption-prefix <text>`: Caption prefix to recognize after Mermaid blocks. Default is `图 `.
-- `--clean`: Remove existing `figure-XX.png` and `figure-XX.mmd` files before extracting fresh Mermaid code blocks.
-- `--no-rewrite`: Render figures without modifying the Markdown file.
+- `--input <path>`：要处理的 Markdown 文件。
+- `--image-dir <path>`：渲染出的 PNG 目录。
+- `--source-dir <path>`：保存 `.mmd` 源码的目录。
+- `--config <path>`：传给 `mmdc` 的 Puppeteer 配置路径。
+- `--width <number>`：Mermaid 渲染宽度。
+- `--scale <number>`：Mermaid 渲染缩放。
+- `--background <color>`：渲染背景色。
+- `--caption-prefix <text>`：识别 Mermaid 代码块后图注用的前缀，默认 `图 `。
+- `--clean`：重新提取 Mermaid 代码前，先删除已有的 `figure-XX.png` 与 `figure-XX.mmd`。
+- `--no-rewrite`：只渲染图片，不修改 Markdown 文件。
 
-## Required Tools
+## 依赖工具
 
-The script calls `mmdc`, the Mermaid CLI. Check availability first:
+脚本调用 `mmdc`（Mermaid CLI），先确认可用性：
 
 ```bash
 mmdc --version
 ```
 
-If `mmdc` is missing, install Mermaid CLI:
+缺少 `mmdc` 时安装 Mermaid CLI：
 
 ```bash
 npm install -g @mermaid-js/mermaid-cli
 ```
 
-If the terminal has network issues and only a small package install is expected, use the user's zsh proxy convention:
+终端网络受限、且这次只装一个小包时，沿用用户 zsh 的代理约定：
 
 ```bash
 /bin/zsh -lc 'source ~/.zshrc; proxy-on; npm install -g @mermaid-js/mermaid-cli'
 ```
 
-Before using `proxy-on`, briefly judge whether the command may download large files. If it may download browser binaries, large dependency bundles, archives, models, datasets, images, or videos, tell the user the likely behavior and ask for confirmation first. If it only fetches small text, metadata, API responses, or small files, proceed.
+用 `proxy-on` 之前先判断这条命令是否会下载大文件。可能下载浏览器二进制、大型依赖包、压缩包、模型、数据集、图片或视频时，先说明预计行为并取得用户确认；只拉取少量文本、元数据、API 响应或小文件时可直接执行。
 
-## Puppeteer Config
+## Puppeteer 配置
 
-If the project does not already have `puppeteer-config.json`, create a minimal config:
+项目里还没有 `puppeteer-config.json` 时，创建一个最小配置：
 
 ```json
 {
@@ -122,18 +122,18 @@ If the project does not already have `puppeteer-config.json`, create a minimal c
 }
 ```
 
-Some local Mermaid CLI installs require a browser executable path in this config. If rendering fails because Chromium or Chrome cannot start, inspect the error and either install the missing browser dependency or set the executable path in `puppeteer-config.json`.
+部分本机 Mermaid CLI 安装需要在配置里指定浏览器可执行文件路径。若渲染因 Chromium 或 Chrome 无法启动而失败，先看报错：补齐缺失的浏览器依赖，或在 `puppeteer-config.json` 中设置可执行文件路径。
 
-## Recommended Workflow
+## 推荐流程
 
-1. Inspect the document for Mermaid blocks and captions.
-2. Run the script from the project directory.
-3. Check that PNG files exist.
-4. Check that Markdown image references exist and point to existing files.
-5. Visually inspect complex or very wide figures.
-6. If a figure layout is poor, edit the corresponding `.mmd` file and rerun the script. Do not put Mermaid code back into the document unless a fresh conversion is needed.
+1. 检查文档里的 Mermaid 代码块与图注。
+2. 在项目目录中运行脚本。
+3. 确认 PNG 文件已生成。
+4. 确认 Markdown 图片引用存在且指向实际文件。
+5. 目视检查复杂或过宽的图。
+6. 图布局不佳时，改对应的 `.mmd` 文件后重跑脚本。除非需要重新转换，不要把 Mermaid 代码放回文档。
 
-Verification commands:
+校验命令：
 
 ```bash
 MERMAID_FIGURE_SKILL="<path-to-this-skill>"

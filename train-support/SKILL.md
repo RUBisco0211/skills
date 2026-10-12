@@ -7,7 +7,7 @@ license: MIT
 dependencies: [tqdm, wandb]
 ---
 
-# Model Training Support 
+# 训练外围功能补全
 
 补全训练外围功能，但不要改变学习算法本身。沿用仓库现有的框架、命名规范、权重格式和指标语义。把算法行为不变视为高于日志完整性、代码整洁度和工程化程度的硬约束。
 
