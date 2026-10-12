@@ -3,6 +3,9 @@ name: pdf2md
 description: 使用本地 ~/SelfHosted/MinerU 中的 MinerU CLI 将 PDF 文档自动转换为高质量 Markdown（保留标题层级、LaTeX 公式、表格与图片）。当用户要求把 PDF 转成 markdown、从 PDF 提取文本/公式/表格、转换学术论文或其他 PDF 文档时使用此 skill。无需启动网页服务，CLI 会自动拉起并关闭临时本地 API 进程。
 version: 1.1.0
 author: RUBisco0211
+license: MIT
+dependencies: [mineru]
+platforms: [macos]
 ---
 
 # PDF to Markdown (MinerU)

@@ -3,6 +3,9 @@ name: auto-paper-beamer
 version: 1.0.0
 author: RUBisco0211
 description: 自动把用户给出的一篇 PDF 学术论文制作成东南大学 Beamer 演示文稿。当用户给出一篇论文 PDF 并要求制作 slides、演示文稿、汇报 PPT，或要求"用东南大学 Beamer 模板/SEU 模板"做论文汇报时使用。本 skill 负责整体流程编排（转换 → 大纲审批 → 制作 → 编译），三大重活通过 subagent 串行执行以隔离主 agent 上下文，具体转换与模板细节分别调用已安装的 pdf2md 和 seu-beamer 两个 skill，不在本 skill 内重复。
+license: MIT
+dependencies: [pdf2md, seu-beamer]
+platforms: [macos]
 ---
 
 # 自动论文 → SEU Beamer

@@ -3,6 +3,7 @@ name: spec-template
 description: 为 vibe coding / AI 协作项目生成轻量文档规范体系 —— `AGENTS.md` 常驻约束、`WORKFLOW.md` 流程总纲、`docs/DECISIONS.md` 决策索引、`docs/decisions/NNNN-*.md` 决策正文、`docs/research/` 调研文档。当用户要为项目建立或初始化 AI 协作规范、需要 AGENTS.md / CLAUDE.md 模板、要搭决策记录（ADR-lite）或调研文档目录时使用本 skill。
 version: 1.0.0
 author: RUBisco0211
+license: MIT
 ---
 
 # spec-template

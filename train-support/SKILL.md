@@ -3,6 +3,8 @@ name: train-support
 version: 1.0.0
 author: RUBisco0211
 description: 在严格保持原有算法逻辑不变的前提下，补全或修复强化学习与深度学习训练代码中的外围功能，包括本地及 Weights & Biases 日志、评估循环与环境渲染媒体、tqdm 终端进度显示、周期性模型保存，以及兼容恢复训练的计数器。需要补充训练指标、wandb 模式、评估周期、进度可视化、权重保存或资源清理逻辑时使用。
+license: MIT
+dependencies: [tqdm, wandb]
 ---
 
 # Model Training Support 

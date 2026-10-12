@@ -3,6 +3,8 @@ name: seu-beamer
 version: 1.0.0
 author: RUBisco0211
 description: 基于 SEU_BeamerTemplate.tex 模板创建、编辑、重构和校验东南大学 Beamer 幻灯片。当需要处理 SEU Beamer .tex 演示文稿、中文/XeLaTeX Beamer 幻灯片、seu.sty 主题资源、幻灯片大纲、报告转幻灯片、frame 版式整理、Beamer 中的图片/表格/公式、图片转 PDF 并放入 figures 目录，或编译校验 SEU_BeamerTemplate.tex 时使用本 skill。
+license: MIT
+dependencies: [xelatex]
 ---
 
 # SEU Beamer

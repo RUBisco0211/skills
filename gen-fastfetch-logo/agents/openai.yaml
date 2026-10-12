@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fastfetch Logo 生成"
+  short_description: "把图片转成 ANSI 彩色 fastfetch logo（ASCII/像素画）"
+  default_prompt: "使用 $gen-fastfetch-logo 把这张图转成 fastfetch logo，并问我选哪种风格。"

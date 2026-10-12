@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid 图渲染"
+  short_description: "把 Markdown 里的 Mermaid 图渲染成 PNG 图片文件"
+  default_prompt: "使用 $render-mermaid-figures 把这份文档里的 Mermaid 图渲染成 PNG。"

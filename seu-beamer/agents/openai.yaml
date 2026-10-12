@@ -1,4 +1,4 @@
 interface:
   display_name: "SEU Beamer 幻灯片"
-  short_description: "创建和编辑 SEU Beamer 幻灯片"
+  short_description: "创建、编辑、重构和编译东南大学 Beamer 演示文稿与幻灯片"
   default_prompt: "使用 $seu-beamer 根据我的大纲创建或修改一份 SEU Beamer 演示文稿。"

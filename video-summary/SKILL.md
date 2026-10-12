@@ -3,6 +3,9 @@ name: video-summary
 description: 从视频链接（YouTube、Bilibili 等）下载视频文件，使用本地 whisper 模型提取音频文本，校对领域概念后整理为 Obsidian Markdown 笔记。当用户要求总结、转写、整理视频内容，或从视频链接生成笔记时使用此 skill。
 version: 1.0.0
 author: RUBisco0211
+license: MIT
+dependencies: [yt-dlp, whisper-cli, ffmpeg]
+platforms: [macos]
 ---
 
 # Video Summary

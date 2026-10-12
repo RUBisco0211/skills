@@ -3,6 +3,8 @@ name: web-demo-video
 version: 1.0.0
 author: RUBisco0211
 description: 为本地或可访问的 Web Demo 设计讲解流程并录制仅包含浏览器页面的演示视频，生成旁白稿、操作时序、SRT/ASS 字幕，并按用户确认可选使用 Qwen3-TTS 生成旁白。用于“录制网页演示”“给 Demo 做讲解视频”“自动操作并录屏”等请求；不用于普通页面截图或非 Web 应用录制。
+license: MIT
+dependencies: [computer-use, ffmpeg, playwright-core]
 ---
 
 # Web Demo 演示视频

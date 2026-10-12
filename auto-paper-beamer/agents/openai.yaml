@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文 PDF 转 SEU Beamer"
+  short_description: "把 PDF 论文自动做成东南大学 Beamer 汇报演示文稿"
+  default_prompt: "使用 $auto-paper-beamer 把这篇论文 PDF 做成东南大学 Beamer 汇报稿。"

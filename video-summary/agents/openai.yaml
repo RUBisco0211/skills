@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频转 Obsidian 笔记"
+  short_description: "下载视频、whisper 转写后整理成 Obsidian 笔记"
+  default_prompt: "使用 $video-summary 把这个视频链接整理成一篇 Obsidian 笔记。"

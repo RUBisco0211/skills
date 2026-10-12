@@ -1,6 +1,10 @@
 ---
 name: m365-todo
 description: 通过 CLI for Microsoft 365 管理个人 Microsoft To Do。用户要求查看、搜索或统计待办，创建任务或清单，修改标题、状态、日期、提醒和重要性，完成或删除任务，或排查个人 Microsoft 账号的 m365 To Do 登录与权限问题时使用。优先用 --query（JMESPath）裁剪结果，只暴露完成任务所需的最少字段。
+version: 1.0.0
+author: RUBisco0211
+license: MIT
+dependencies: [m365]
 ---
 
 # M365 个人 To Do

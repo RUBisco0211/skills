@@ -1,0 +1,4 @@
+interface:
+  display_name: "PDF 转 Markdown"
+  short_description: "用本地 MinerU 把 PDF 转成保留公式与表格的 Markdown"
+  default_prompt: "使用 $pdf2md 把这个 PDF 转换成保留公式和表格的 Markdown。"
